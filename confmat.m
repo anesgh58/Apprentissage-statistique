@@ -13,7 +13,7 @@ function [C,err_rate] = confmat(true_lb,est_lb)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ind = unique(true_lb);
 m = length(ind); % number of classes
-C = accumarray([true_lb,est_lb],ones(length(true_lb),1));
+C = accumarray([true_lb,est_lb],ones(length(true_lb),1), [max(true_lb), max(true_lb)]);
 C = C(ind,ind);
 err_rate = sum(sum(C-diag(diag(C))))/sum(sum(C));
 C = diag(1./sum(C,2))*C;

@@ -6,7 +6,7 @@ close all;
 
 %% Data extraction - training
 % Training set
-adr = './database/training1/';
+adr = './database/training3/';
 fld = dir(adr);
 nb_elt = length(fld);
 % Data matrix containing the training images in its columns 
@@ -76,6 +76,12 @@ data = data_trn(:,1);
 [U, l] = dimension_facespace(L, data_trn, U, M, N, alpha, 192, 168); % dimension_face contient une fonction d'affichage
 
 
+%% Travail préalable (pour questions Bonus)
+% nous allons modifier le vecteur lb_test pour que les labels nons présents
+% dans la base de donnees de training soient remplaces de façon 
+% correspondre au label affecte dans gaussien_classifieur3
+
+lb_test = modifier_labels(lb_test, cls_trn);
 
 %% Classifieur k-NN
 k = 2; % hyperparametre k
@@ -86,7 +92,9 @@ est_lb_knn = kNN_classifieur(data_trn, data_test, lb_trn, U, M, N, N_test, k);
 %% Classifieur gaussien
 est_lb_gauss = gaussien_classifieur(data_trn, data_test, lb_trn, cls_trn, U, M, N, N_test, Nc, l);
 est_lb_gauss2 = gaussien_classifieur2(data_trn, data_test, lb_trn, cls_trn, U, M, N, N_test, Nc, l);
+est_lb_gauss3 = gaussien_classifieur3(data_trn, data_test, lb_trn, cls_trn, U, M, N, N_test, Nc, l, 1e5); %bonus
 
 [C_gauss,err_rate_gauss] = confmat(lb_test, est_lb_gauss.');
 [C_gauss2,err_rate_gauss2] = confmat(lb_test, est_lb_gauss2.');
+[C_gauss3,err_rate_gauss3] = confmat(lb_test, est_lb_gauss3.'); %bonus
 
