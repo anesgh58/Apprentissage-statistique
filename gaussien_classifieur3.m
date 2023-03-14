@@ -21,7 +21,6 @@ Mu = W*A; % moyenne associée à chaque image de la base de training en fonction
 mu = unique(Mu.', 'rows', 'stable').'; %seulement les mu_j
 Sigma = (1/N)*(W-Mu)*(W-Mu).'; % matrice de covariance de toutes les images
 
-affichage_nuages(W, mu, 1, 2, 3, 4, 5);
 %% Classification
 W_test = zeros(l,N_test); % matrice omega contenant les composantes principales de chaque image
 for img = 1:N_test

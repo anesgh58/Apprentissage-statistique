@@ -31,4 +31,13 @@ end
     l = length(find(k > alpha));
     U = U(:,N-l:end);
 
+    figure;
+    plot(L, k);
+    hold on;
+    plot(alpha * ones(1, length(L)));
+    legend('k(l)', 'seuil');
+    xlabel("dimension de l'espace de reconstruction");
+    ylabel('ratio de reconstruction');
+    grid on;
+
 end
