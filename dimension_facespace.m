@@ -28,7 +28,8 @@ for img = 1:N
 end
 
     %Question 4 (fin)
-    l = length(find(k > alpha));
+    idx = find(k > alpha, 1, "last");
+    l = L(idx);
     U = U(:,N-l:end);
 
     figure;
