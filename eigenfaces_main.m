@@ -6,7 +6,7 @@ close all;
 
 %% Data extraction - training
 % Training set
-adr = './database/training3/';
+adr = './database/training1/';
 fld = dir(adr);
 nb_elt = length(fld);
 % Data matrix containing the training images in its columns 
@@ -64,16 +64,20 @@ end
 
 % Question2
 figure;
-for k=1:10
-    subplot(10,1,k);
+K = [1:10:N, N-1];
+i = 1;
+for k = K
+    subplot(length(K),1,i);
     plot(U(:,k));
+    title(strcat("eigenfaces n", num2str(k)));
+    i = i+1;
 end
 
 %Questions 3 et 4
 alpha = 0.9;
 L = N-1:-1:1;
 data = data_trn(:,1);
-[U, l] = dimension_facespace(L, data_trn, U, M, N, alpha, 192, 168); % dimension_face contient une fonction d'affichage
+[U, l] = dimension_facespace(L, data_trn, U, M, N, alpha, 192, 168, Nc); % dimension_face contient une fonction d'affichage
 
 
 %% Travail préalable (pour questions Bonus)

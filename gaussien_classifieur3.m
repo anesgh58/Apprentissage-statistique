@@ -1,4 +1,4 @@
-function [phi] = gaussien_classifieur(data_trn, data_test, lb_trn, cls_trn, U, M, N, N_test, Nc, l, seuil)
+function [phi] = gaussien_classifieur3(data_trn, data_test, lb_trn, cls_trn, U, M, N, N_test, Nc, l, seuil)
 %% Moyenne et Covariance
 W = zeros(l,N); % matrice omega contenant les composantes principales de chaque image
 for img = 1:N
